@@ -1,0 +1,43 @@
+# BMI calculator
+
+weight, height, gender = None, None, None
+
+#Prompts the user for GLOBAL weight & height, checks input validity, and returns float(input)
+def user_prompt (): 
+  
+  global weight, height
+  
+  weight = input("Weight?")
+  height = input("Height (cm)?")
+  
+  try:
+    weight = float(weight)
+    height = float(height) / 100
+  except:
+    print("Invalid input")
+    user_prompt()
+  
+  return weight, height
+
+
+# Calculates BMI and returns it
+def BMI ():
+  
+  user_prompt()
+  index = weight / (height ** 2)
+  
+  if index < 18.5:
+    return "Underweight"
+  elif index >= 18.5 and index <= 24.9:
+    return "Normal"
+  elif index >= 25 and index <= 29.9:
+    return "Overweight"
+  elif index >= 30 and index <= 34.9:
+    return "Obesity I"
+  elif index >= 35 and index <= 39.9:
+    return "Obesity II"
+  elif  index >= 40:
+    return "Extreme Obesity"
+
+
+print (BMI())
